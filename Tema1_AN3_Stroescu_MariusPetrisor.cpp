@@ -57,14 +57,19 @@ void adaugareNodInListaSimpla(Nod*& cap, Simigerie s) {
 	Nod* nou = (Nod*)malloc(sizeof(Nod));
 	nou->info = s;
 	if (cap) {
-		nou->next = cap;
-		cap = nou;
+		Nod* aux = cap;
+		while (aux->next) {
+			aux = aux->next;
+		}
+		aux->next = nou;
+		nou->next = NULL;
+		//nou->next = cap;
+		//cap = nou;
 	}
 	else {
 		cap = nou;
 		cap->next = NULL;
 	}
-
 }
 
 void afisareListaSimpla(Nod* cap) {
